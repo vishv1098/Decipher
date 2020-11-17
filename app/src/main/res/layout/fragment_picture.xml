@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="355dp"
+        android:layout_height="326dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icons8_google_translate_64px_1" />
+    <EditText
+        android:id="@+id/textView"
+        android:layout_width="359dp"
+        android:layout_height="164dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/design_default_color_background"
+        android:inputType="none"
+        android:enabled="false"
+        android:ems="10"
+        android:gravity="start|top"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <Spinner
+        android:id="@+id/pictureTextChoose"
+        android:layout_width="185dp"
+        android:layout_height="59dp"
+        android:backgroundTintMode="src_in"
+        android:entries="@array/LanguageList"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/surfaceView" />
+
+    <ImageButton
+        android:id="@+id/pictureSpeaker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/design_default_color_on_secondary"
+        android:onClick="pictureSpeaker"
+        android:tint="?attr/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/icons8_voice_24px" />
+
+    <ImageButton
+        android:id="@+id/buttonStart"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:backgroundTint="@color/design_default_color_on_secondary"
+        android:onClick="buttonStart"
+        android:tint="?attr/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/surfaceView"
+        app:layout_constraintEnd_toEndOf="@+id/surfaceView"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/surfaceView"
+        app:layout_constraintTop_toTopOf="@+id/surfaceView"
+        app:layout_constraintVertical_bias="0.769"
+        app:srcCompat="@drawable/icons8_ocr_64px_1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

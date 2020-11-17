@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Profile"
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/icons8_street_view_64px"/>
+
+    <item
+        android:title="Stats"
+        android:id="@+id/nav_stats"
+        android:icon="@drawable/icons8_combo_chart_64px"/>
+
+    <item
+        android:title="TTT"
+        android:id="@+id/nav_textToText"
+        android:icon="@drawable/icons8_language_64px"/>
+
+    <item
+        android:title="PTT"
+        android:id="@+id/nav_photoToText"
+        android:icon="@drawable/icons8_ocr_64px_1"/>
+
+</menu>
