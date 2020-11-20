@@ -14,7 +14,7 @@
         android:layout_width="232dp"
         android:layout_height="186dp"
         android:layout_marginTop="148dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginHead"
+        app:layout_constraintBottom_toTopOf="@+id/registrationHead"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/icons8_google_translate_64px_1" />
 
     <TextView
-        android:id="@+id/loginHead"
+        android:id="@+id/registrationHead"
         android:layout_width="234dp"
         android:layout_height="84dp"
         android:layout_marginBottom="116dp"

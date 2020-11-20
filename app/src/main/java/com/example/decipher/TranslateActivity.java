@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
@@ -20,7 +19,6 @@ import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -206,7 +204,7 @@ public class TranslateActivity extends AppCompatActivity {
         }
     }
     public void translate() {
-        spinText = (Spinner)findViewById(R.id.textChoose);
+        spinText = (Spinner)findViewById(R.id.regtextChoose);
         inputToTranslate = findViewById(R.id.inputToTranslate);
         translatedTv = findViewById(R.id.translatedTv);
         originalText = inputToTranslate.getText().toString();
