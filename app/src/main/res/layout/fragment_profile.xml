@@ -6,22 +6,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black">
+
+    <TextView
+        android:id="@+id/profileNative"
+        android:layout_width="344dp"
+        android:layout_height="168dp"
+        android:layout_marginBottom="88dp"
+        android:fontFamily="@font/bungee"
+        android:text="T"
+        android:textAlignment="center"
+        android:textColor="?attr/colorAccent"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/profileLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icons8_google_translate_64px_1" />
+
     <TextView
-        android:id="@+id/pictureTransText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="profile"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/profileName"
+        android:layout_width="344dp"
+        android:layout_height="168dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/bungee"
+        android:text="XYZ"
+        android:textAlignment="center"
+        android:textColor="?attr/colorAccent"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/profileNative"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="136dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="80dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/profileName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@android:mipmap/sym_def_app_icon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

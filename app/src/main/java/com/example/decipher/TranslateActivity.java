@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StrictMode;
+import android.provider.ContactsContract;
 import android.speech.tts.TextToSpeech;
 import android.util.SparseArray;
 import android.view.MenuItem;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -53,8 +55,11 @@ public class TranslateActivity extends AppCompatActivity {
     private boolean connected;
     Translate translate;
     Spinner spinPic, spinText;
+    private TextView profileName,profileNative;
     HashMap<String, String> Languages = new HashMap<String, String>();
 
+    DatabaseHelper db;
+    Bundle extras,bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,9 +74,14 @@ public class TranslateActivity extends AppCompatActivity {
         Languages.put("Japanese", "ja");
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new
-                ProfileFragment()).commit();
+        ProfileFragment initFrag = new ProfileFragment();
+        extras = getIntent().getExtras();
+        bundle = new Bundle();
+        db = new DatabaseHelper(this);
+        bundle.putString("Name",db.profileName(extras.getString("Email")));
+        bundle.putString("Native",db.getNative(extras.getString("Email")));
+        initFrag.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, initFrag).commit();
         ActivityCompat.requestPermissions(this, new String[]{CAMERA},
                 PackageManager.PERMISSION_GRANTED);
         textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
@@ -79,6 +89,7 @@ public class TranslateActivity extends AppCompatActivity {
             public void onInit(int status) {
             }
         });
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -88,9 +99,17 @@ public class TranslateActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.nav_profile:
                     selectedFragment = new ProfileFragment();
+                    db = new DatabaseHelper(TranslateActivity.this);
+                    bundle.putString("Name",db.profileName(extras.getString("Email")));
+                    bundle.putString("Native",db.getNative(extras.getString("Email")));
+                    selectedFragment.setArguments(bundle);
                     break;
                 case R.id.nav_stats:
                     selectedFragment = new StatsFragment();
+                    db = new DatabaseHelper(TranslateActivity.this);
+                    bundle.putString("Text",db.regGetter(extras.getString("Email")));
+                    bundle.putString("OCR",db.ocrGetter(extras.getString("Email")));
+                    selectedFragment.setArguments(bundle);
                     break;
                 case R.id.nav_textToText:
                     selectedFragment = new TextFragment();
@@ -113,7 +132,17 @@ public class TranslateActivity extends AppCompatActivity {
         super.onDestroy();
         cameraSource.release();
     }
+  /*  private void profileUpdater(){
 
+        extras = getIntent().getExtras();
+        db=new DatabaseHelper(this);
+        profileName = (TextView)findViewById(R.id.profileName);
+        //profileName.setText(db.profileName(extras.getString("Email")));
+        profileName.setText("Vishnu");
+        profileNative = (TextView)findViewById(R.id.profileNative);
+        //profileNative.setText(db.getNative(extras.getString("Email")));
+        profileNative.setText("HI");
+    }*/
     private void textRecognizer() {
         textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
         cameraSource = new CameraSource.Builder(getApplicationContext(),
@@ -182,10 +211,11 @@ public class TranslateActivity extends AppCompatActivity {
             translation:
             getTranslateService();
             resultObtained();
+            db = new DatabaseHelper(this);
+            db.ocrupdater(extras.getString("Email"));
         } else {
             if(stringResult!=null){
-                textView = findViewById(R.id.textView);
-                textView.setText("no connection");
+                Toast.makeText(getApplicationContext(), "Unable to Connect to Translate servers", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -229,9 +259,10 @@ public class TranslateActivity extends AppCompatActivity {
 
             getTranslateService();
             translate();
+            db.regupdater(extras.getString("Email"));
         } else {
 
-            translatedTv.setText("no connection");
+            Toast.makeText(getApplicationContext(), "Unable to Connect to Translate servers", Toast.LENGTH_LONG).show();
         }
     }
     public void pictureSpeaker(View view){

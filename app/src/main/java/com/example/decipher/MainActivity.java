@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (db.authenticator(login.getText().toString(), password.getText().toString()) == true) {
                     Intent i = new Intent(MainActivity.this, SplashScreen.class);
+                    i.putExtra("Email",login.getText().toString());
                     startActivity(i);
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();

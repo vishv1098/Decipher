@@ -83,14 +83,14 @@
         android:id="@+id/registrationHead"
         android:layout_width="326dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="32dp"
         android:fontFamily="serif-monospace"
         android:text="Create your Decipher Account"
         android:textColor="?attr/colorAccent"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/registrationEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.258"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -112,7 +112,7 @@
         android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="148dp"
         android:background="@android:drawable/screen_background_dark_transparent"
         android:tint="?attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
